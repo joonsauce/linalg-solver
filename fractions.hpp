@@ -23,6 +23,7 @@ public:
     int getDenominator ();
     void reduceFraction();
     bool isGreaterThan(Fraction frac);
+    bool isEqualTo(Fraction frac);
     Fraction multiply(Fraction frac);
     Fraction divide(Fraction frac);
     Fraction add(Fraction frac);

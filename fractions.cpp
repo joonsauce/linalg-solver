@@ -44,7 +44,18 @@ bool Fraction::isGreaterThan(Fraction frac) {
     unsigned int dec = this->findGCF(frac.getDenominator());
     this->makeGCF(dec);
     frac.makeGCF(dec);
-    return frac.getNumerator() < this->numerator;
+    bool result = frac.getNumerator() < this->numerator;
+    this->reduceFraction();
+    return result;
+}
+
+bool Fraction::isEqualTo(Fraction frac) {
+    unsigned int dec = this->findGCF(frac.getDenominator());
+    this->makeGCF(dec);
+    frac.makeGCF(dec);
+    bool result = frac.getNumerator() == this->numerator;
+    this->reduceFraction();
+    return result;
 }
 
 Fraction Fraction::multiply(Fraction frac) {
