@@ -1,3 +1,5 @@
+#include<fractions.hpp>
+
 class Fraction {
 private:
     int numerator;
