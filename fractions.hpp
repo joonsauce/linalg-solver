@@ -3,10 +3,40 @@ private:
     int numerator;
     unsigned int denominator;
     bool init;
-    void fixZero();
-    void makeGCF(unsigned int fac);
-    unsigned int findGCF(unsigned int den);
-    void reduceInt(unsigned int* num);
+    
+    void fixZero() {
+        if (this->numerator == 0) {
+            this->denominator == 0;
+        }
+    }
+
+    void makeGCF(unsigned int fac) {
+        if (fac >= this->denominator) {
+            fac /= this->denominator;
+            this->denominator *= fac;
+            this->numerator *= fac;
+        }
+    }
+
+    unsigned int findGCF(unsigned int den) {
+        unsigned int init = this->denominator * den;
+        return init;
+    }
+
+    void reduceInt(unsigned int* num) {
+        bool check = false;
+        int i = 0;
+        while (!check && i <=((*num) >> 1)) {
+            if (*num % i == 0) {
+                check = true;
+                *num /= i;
+            }
+            i++;
+        }
+        if (check) {
+            reduceInt(num);
+        }
+    }
 public:
     double getDecimalForm ();
     int getNumerator ();

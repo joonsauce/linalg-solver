@@ -1,20 +1,14 @@
 #include "imaginary.hpp"
 
-class Imaginary {
-private:
-    Fraction real;
-    Fraction imaginary;
-public:
-    Fraction getReal() {
-        return real;
-    }
+Fraction Imaginary::getReal() {
+    return this->real;
+}
 
-    Fraction getImaginary() {
-        return imaginary;
-    }
+Fraction Imaginary::getImaginary() {
+    return this->imaginary;
+}
 
-    // return true if im > this
-    bool isGreaterThan(Imaginary im) {
-        
-    }
-};
+// return true if im > this
+bool Imaginary::isGreaterThan(Imaginary im) {
+    
+}
