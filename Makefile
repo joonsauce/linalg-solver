@@ -1,18 +1,19 @@
 CC=g++
 CFLAGS=-I.
-OBJ = app.o
-NAME = app
-DEPS = circuit.hpp
+OBJ = test.o fractions.o imaginary.o linalg.o
+DEPS = *.hpp
 
 %.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-make: $(OBJ)
-	$(CC) -o $(NAME) $^ $(CFLAGS)
+test: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
 	$(RM) *.o
 
 run:
 	./$(NAME)
+
+.PHONY: clean
 
 clean:
 	$(RM) *.o $(NAME).exe
