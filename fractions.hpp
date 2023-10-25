@@ -3,12 +3,6 @@ private:
     int numerator;
     unsigned int denominator;
     bool init;
-    
-    void fixZero() {
-        if (this->numerator == 0) {
-            this->denominator == 0;
-        }
-    }
 
     void makeGCF(unsigned int fac) {
         if (fac >= this->denominator) {
@@ -38,6 +32,7 @@ private:
         }
     }
 public:
+    void fixZero();
     double getDecimalForm ();
     int getNumerator ();
     int getDenominator ();

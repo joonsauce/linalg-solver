@@ -1,5 +1,11 @@
 #include "fractions.hpp"
 
+void Fraction::fixZero() {
+    if (this->numerator == 0) {
+        this->denominator = 0;
+    }
+}
+
 double Fraction::getDecimalForm () {
     return (this->numerator != 0) ? (double) this->numerator / this->denominator : 0.0;
 }
@@ -50,6 +56,8 @@ Fraction Fraction::multiply(Fraction frac) {
     Fraction save;
     save.numerator = this->numerator * frac.getNumerator();
     save.denominator = this->denominator * frac.getDenominator();
+    save.reduceFraction();
+    save.fixZero();
     return save;
 }
 
@@ -57,6 +65,8 @@ Fraction Fraction::divide(Fraction frac) {
     Fraction save;
     save.numerator = this->numerator * frac.getDenominator();
     save.denominator = this->denominator * frac.getNumerator();
+    save.reduceFraction();
+    save.fixZero();
     return save;
 }
 
@@ -69,6 +79,7 @@ Fraction Fraction::add(Fraction frac) {
     save.numerator = this->numerator + frac.getNumerator();
     save.denominator = this->denominator;
     save.reduceFraction();
+    save.fixZero();
     this->reduceFraction();
     return save;
 }
@@ -82,6 +93,7 @@ Fraction Fraction::subtract(Fraction frac) {
     save.numerator = this->numerator - frac.getNumerator();
     save.denominator = this->denominator;
     save.reduceFraction();
+    save.fixZero();
     this->reduceFraction();
     return save;
 }
