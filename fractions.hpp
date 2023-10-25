@@ -2,7 +2,6 @@ class Fraction {
 private:
     int numerator;
     unsigned int denominator;
-    bool init;
 
     void makeGCF(unsigned int fac) {
         if (fac >= this->denominator) {
@@ -16,28 +15,13 @@ private:
         unsigned int init = this->denominator * den;
         return init;
     }
-
-    void reduceInt(unsigned int* num) {
-        bool check = false;
-        int i = 0;
-        while (!check && i <=((*num) >> 1)) {
-            if (*num % i == 0) {
-                check = true;
-                *num /= i;
-            }
-            i++;
-        }
-        if (check) {
-            reduceInt(num);
-        }
-    }
 public:
+    Fraction(int, unsigned int);
     void fixZero();
     double getDecimalForm ();
     int getNumerator ();
     int getDenominator ();
     void reduceFraction();
-    void makeFraction (int num, int denum);
     bool isGreaterThan(Fraction frac);
     Fraction multiply(Fraction frac);
     Fraction divide(Fraction frac);

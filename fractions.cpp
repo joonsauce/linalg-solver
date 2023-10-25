@@ -1,5 +1,10 @@
 #include "fractions.hpp"
 
+Fraction::Fraction(int num = 0, unsigned int denum = 0) {
+    this->denominator = denum;
+    this->numerator = num;
+}
+
 void Fraction::fixZero() {
     if (this->numerator == 0) {
         this->denominator = 0;
@@ -30,16 +35,6 @@ void Fraction::reduceFraction() {
         }
     }
     if (status) {
-        reduceFraction();
-    }
-}
-
-void Fraction::makeFraction (int num, int denum) {
-    if (!init) {
-        this->denominator = denum;
-        this->numerator = num;
-        this->init = true;
-        fixZero();
         reduceFraction();
     }
 }
