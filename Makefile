@@ -1,6 +1,7 @@
 CC=g++
 CFLAGS=-I.
 OBJ = test.o fractions.o imaginary.o linalg.o
+NAME = test
 DEPS = *.hpp
 
 %.o: %.cpp $(DEPS)
