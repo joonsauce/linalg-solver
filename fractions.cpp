@@ -69,7 +69,7 @@ Fraction Fraction::multiply(Fraction frac) {
 
 Fraction Fraction::divide(Fraction frac) {
     if (frac.getNumerator() == 0) {
-        throw "Division by zero";
+        throw FractionDivideByZeroException();
     }
     Fraction save;
     save.numerator = this->numerator * frac.getDenominator();

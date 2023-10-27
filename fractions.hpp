@@ -1,10 +1,22 @@
+#include <exception>
+#include <string>
+
+using namespace std;
+
+class FractionDivideByZeroException : public std::exception {
+public:
+    string what () {
+            return "Attempted to divide fraction by zero!";
+    }
+};
+
 class Fraction {
 private:
     int numerator;
     unsigned int denominator;
 
     void makeGCF(unsigned int fac) {
-        if (fac >= this->denominator) {
+        if (fac >= this->denominator && this->denominator != 0) {
             fac /= this->denominator;
             this->denominator *= fac;
             this->numerator *= fac;
