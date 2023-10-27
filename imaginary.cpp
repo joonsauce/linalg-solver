@@ -20,8 +20,9 @@ Fraction Imaginary::getImaginary() {
 
 // return true if this > im
 bool Imaginary::isGreaterThan(Imaginary im) {
-    if (this->real.isGreaterThan(im.getReal()) || (this->imaginary.isEqualTo(im.getImaginary()) && this->imaginary.isGreaterThan(im.getImaginary()))) {
-        return true;
-    }
-    return false;
+    return this->real.isGreaterThan(im.getReal()) || (this->imaginary.isEqualTo(im.getImaginary()) && this->imaginary.isGreaterThan(im.getImaginary()));
+}
+
+bool Imaginary::isEqualTo(Imaginary im) {
+    return (this->real.isEqualTo(im.getReal()) && this->imaginary.isEqualTo(im.getImaginary()));
 }
