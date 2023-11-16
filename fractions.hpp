@@ -3,10 +3,17 @@
 
 using namespace std;
 
+class FractionZeroInDenominatorException : public std::exception {
+public:
+    string what() {
+        return "Cannot have zero in denominator of a fraction!";
+    }
+};
+
 class FractionDivideByZeroException : public std::exception {
 public:
-    string what () {
-            return "Attempted to divide fraction by zero!";
+    string what() {
+        return "Attempted to divide fraction by zero!";
     }
 };
 

@@ -1,6 +1,9 @@
 #include "fractions.hpp"
 
 Fraction::Fraction(int num = 0, unsigned int denum = 0) {
+    if (num != 0 && denum == 0) {
+        throw FractionZeroInDenominatorException();
+    }
     this->denominator = denum;
     this->numerator = num;
 }
