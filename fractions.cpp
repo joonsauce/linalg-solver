@@ -1,6 +1,11 @@
 #include "fractions.hpp"
 
-Fraction::Fraction(int num = 0, unsigned int denum = 0) {
+Fraction::Fraction() {
+    this->denominator = 1;
+    this->numerator = 1;
+}
+
+Fraction::Fraction(int num, unsigned int denum) {
     if (num != 0 && denum == 0) {
         throw FractionZeroInDenominatorException();
     }
@@ -15,7 +20,7 @@ void Fraction::fixZero() {
 }
 
 double Fraction::getDecimalForm () {
-    return (this->numerator != 0) ? (double) this->numerator / this->denominator : 0.0;
+    return (this->numerator != 0) ? (((double) this->numerator) / ((double) this->denominator)) : 0.0;
 }
 
 int Fraction::getNumerator () {

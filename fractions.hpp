@@ -35,6 +35,7 @@ private:
         return init;
     }
 public:
+    Fraction();
     Fraction(int, unsigned int);
     void fixZero();
     double getDecimalForm ();
