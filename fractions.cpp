@@ -1,8 +1,8 @@
 #include "fractions.hpp"
 
 Fraction::Fraction() {
-    this->denominator = 1;
-    this->numerator = 1;
+    this->denominator = 0;
+    this->numerator = 0;
 }
 
 Fraction::Fraction(int num, unsigned int denum) {
@@ -113,4 +113,10 @@ Fraction Fraction::subtract(Fraction frac) {
     save.fixZero();
     this->reduceFraction();
     return save;
+}
+
+void Fraction::inverse() {
+    int temp = this->denominator;
+    this->denominator = this->numerator;
+    this->numerator = temp;
 }

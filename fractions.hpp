@@ -48,4 +48,5 @@ public:
     Fraction divide(Fraction frac);
     Fraction add(Fraction frac);
     Fraction subtract(Fraction frac);
+    void inverse();
 };
