@@ -1,13 +1,13 @@
 #include "imaginary.hpp"
 
-// Imaginary::Imaginary(Fraction real, Fraction imaginary) {
-//     this->imaginary = imaginary;
-//     this->real = real;
-// }
+Imaginary::Imaginary() {
+    this->imaginary = Fraction();
+    this->real = Fraction();
+}
 
-void Imaginary::makeNumber(Fraction real, Fraction imaginary) {
-    this->real = real;
+Imaginary::Imaginary(Fraction real, Fraction imaginary) {
     this->imaginary = imaginary;
+    this->real = real;
 }
 
 Fraction Imaginary::getReal() {
