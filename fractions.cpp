@@ -89,34 +89,27 @@ Fraction Fraction::divide(Fraction frac) {
 
 // this + frac
 Fraction Fraction::add(Fraction frac) {
-    Fraction save;
     unsigned int gcf = this->findGCF(frac.getDenominator());
     frac.makeGCF(gcf);
     this->makeGCF(gcf);
-    save.numerator = this->numerator + frac.getNumerator();
-    save.denominator = this->denominator;
+    Fraction save = Fraction(this->numerator + frac.getNumerator(), this->denominator);
     save.reduceFraction();
     save.fixZero();
     this->reduceFraction();
     return save;
 }
 
-// this - frac
+// this - frac (same as this + (-frac))
 Fraction Fraction::subtract(Fraction frac) {
-    Fraction save;
-    unsigned int gcf = this->findGCF(frac.getDenominator());
-    frac.makeGCF(gcf);
-    this->makeGCF(gcf);
-    save.numerator = this->numerator - frac.getNumerator();
-    save.denominator = this->denominator;
-    save.reduceFraction();
-    save.fixZero();
-    this->reduceFraction();
-    return save;
+    return this->add(frac.makeNegative());
 }
 
 void Fraction::inverse() {
     int temp = this->denominator;
     this->denominator = this->numerator;
     this->numerator = temp;
+}
+
+Fraction Fraction::makeNegative() {
+    return Fraction(-(this->numerator), this->denominator);
 }
