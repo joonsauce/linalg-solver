@@ -23,15 +23,30 @@ private:
     unsigned int denominator;
 
     void makeGCF(unsigned int fac) {
-        if (fac >= this->denominator && this->denominator != 0) {
+        if (this->denominator != 0 && fac % this->denominator == 0) {
             fac /= this->denominator;
             this->denominator *= fac;
             this->numerator *= fac;
         }
+        else if (this->denominator == 0) {
+            this->denominator += fac;
+        }
     }
 
     unsigned int findGCF(unsigned int den) {
-        unsigned int init = this->denominator * den;
+        unsigned int init;
+        if (den == 0 && this->denominator != 0) {
+            init = this->denominator;
+        }
+        else if (den == 0 && this->denominator == 0) {
+            init = 0;
+        }
+        else if (den != 0 && this->denominator == 0) {
+            init = den;
+        }
+        else {
+            init = this->denominator * den;
+        }
         return init;
     }
 public:
@@ -49,4 +64,5 @@ public:
     Fraction add(Fraction frac);
     Fraction subtract(Fraction frac);
     void inverse();
+    Fraction makeNegative();
 };
