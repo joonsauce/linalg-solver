@@ -32,8 +32,11 @@ int Fraction::getDenominator () {
 }
 
 // make fraction be the most reduced form possible
-void Fraction::reduceFraction() {
+void Fraction::reduceFraction(bool isNegative) {
     bool status = false;
+    if (isNegative) {
+        this->numerator = -(this->numerator);
+    }
     for (int i = 2; i <= ((numerator < denominator) ? (denominator >> 1) : (numerator >> 1)); i++) {
         if (numerator % i == 0 && denominator % i == 0) {
             status = true;
@@ -43,7 +46,10 @@ void Fraction::reduceFraction() {
         }
     }
     if (status) {
-        reduceFraction();
+        reduceFraction(isNegative);
+    }
+    else if (isNegative) {
+        this->numerator = -(this->numerator);
     }
 }
 
@@ -53,7 +59,7 @@ bool Fraction::isGreaterThan(Fraction frac) {
     this->makeGCF(dec);
     frac.makeGCF(dec);
     bool result = frac.getNumerator() < this->numerator;
-    this->reduceFraction();
+    this->reduceFraction(this->numerator < 0);
     return result;
 }
 
@@ -62,7 +68,7 @@ bool Fraction::isEqualTo(Fraction frac) {
     this->makeGCF(dec);
     frac.makeGCF(dec);
     bool result = frac.getNumerator() == this->numerator;
-    this->reduceFraction();
+    this->reduceFraction(this->numerator < 0);
     return result;
 }
 
@@ -70,7 +76,7 @@ Fraction Fraction::multiply(Fraction frac) {
     Fraction save;
     save.numerator = this->numerator * frac.getNumerator();
     save.denominator = this->denominator * frac.getDenominator();
-    save.reduceFraction();
+    save.reduceFraction(save.getNumerator() < 0);
     save.fixZero();
     return save;
 }
@@ -82,7 +88,7 @@ Fraction Fraction::divide(Fraction frac) {
     Fraction save;
     save.numerator = this->numerator * frac.getDenominator();
     save.denominator = this->denominator * frac.getNumerator();
-    save.reduceFraction();
+    save.reduceFraction(save.getNumerator() < 0);
     save.fixZero();
     return save;
 }
@@ -93,9 +99,9 @@ Fraction Fraction::add(Fraction frac) {
     frac.makeGCF(gcf);
     this->makeGCF(gcf);
     Fraction save = Fraction(this->numerator + frac.getNumerator(), this->denominator);
-    save.reduceFraction();
+    save.reduceFraction(save.getNumerator() < 0);
     save.fixZero();
-    this->reduceFraction();
+    this->reduceFraction(this->numerator < 0);
     return save;
 }
 
