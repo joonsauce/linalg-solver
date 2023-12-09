@@ -86,8 +86,8 @@ Fraction Fraction::divide(Fraction frac) {
         throw FractionDivideByZeroException();
     }
     Fraction save;
-    save.numerator = this->numerator * frac.getDenominator();
-    save.denominator = this->denominator * frac.getNumerator();
+    save.numerator = ((frac.getNumerator() < 0) ? -1 : 1) * this->numerator * frac.getDenominator();
+    save.denominator = this->denominator * (frac.getNumerator() * ((frac.getNumerator() < 0) ? -1 : 1));
     save.reduceFraction(save.getNumerator() < 0);
     save.fixZero();
     return save;
