@@ -111,9 +111,10 @@ Fraction Fraction::subtract(Fraction frac) {
 }
 
 void Fraction::inverse() {
+    bool isNegative = this->numerator < 0;
     int temp = this->denominator;
-    this->denominator = this->numerator;
-    this->numerator = temp;
+    this->denominator = isNegative ? (-this->numerator) : this->numerator;
+    this->numerator = isNegative ? (-temp) : temp;
 }
 
 Fraction Fraction::makeNegative() {
