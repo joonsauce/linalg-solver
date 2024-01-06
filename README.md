@@ -1,7 +1,7 @@
 # Linear System Solver
 
 A library designed to solve linear systems of equations. Currently 
-on stage 1/3 of development.
+on stage 2/3 of development.
 
 ## Stage 1
 - Fractions work as intended
